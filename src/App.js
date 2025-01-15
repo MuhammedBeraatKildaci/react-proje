@@ -1,4 +1,4 @@
-import React, { createElement, Fragment,useState} from "react";
+import React, { createElement, Fragment,useEffect,useState} from "react";
 import Button from './components/Button';
 import Tab from "./components/Tab"
 
@@ -21,6 +21,16 @@ const App = () => {
 
 	const [activeTab, setActiveTab] = useState(1)
 
+  /* lifesycle method */
+  useEffect(() => {
+    console.log("component did mount");
+    
+  },[])
+  useEffect(() => {
+    console.log("component did update");
+  },[activeTab])
+ 
+
   /**createElement
    * return createElement('main',{
       className: 'test-app',
@@ -31,21 +41,22 @@ const App = () => {
   return (
     //fragment
     <>
-        <div style={{padding: 20}}>
-				<button onClick={() => setActiveTab(2)}>
-					Aktif Tabı Değiştir
-				</button>
-				<Tab activeTab={activeTab} onChange={tabIndex => setActiveTab(tabIndex)}>
-					<Tab.Panel title="Profil"><Profile /></Tab.Panel>
-					<Tab.Panel title="Hakkında">2. tab</Tab.Panel>
-					<Tab.Panel title="Ayarlar">3. tab</Tab.Panel>
-				</Tab>
-				{activeTab === 2 && (
-					<div>
-						burası da eksta bir alan!
-					</div>
-				)}
-			</div>
+
+         <div style={{padding: 20}}>
+         <button onClick={() => setActiveTab(2)}>
+           Aktif Tabı Değiştir
+         </button>
+         <Tab activeTab={activeTab} onChange={tabIndex => setActiveTab(tabIndex)}>
+           <Tab.Panel title="Profil"><Profile /></Tab.Panel>
+           <Tab.Panel title="Hakkında">2. tab</Tab.Panel>
+           <Tab.Panel title="Ayarlar">3. tab</Tab.Panel>
+         </Tab>
+         {activeTab === 2 && (
+           <div>
+             burası da eksta bir alan!
+           </div>
+         )}
+       </div>
 
 
       <main id="main" className="test-app">
