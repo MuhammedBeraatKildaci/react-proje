@@ -2,6 +2,7 @@ import React, { createElement, Fragment, useEffect, useState } from "react";
 import Button from "./components/Button";
 import Tab from "./components/Tab";
 import UseRefAndForwardRef from "./components/UseRefAndForwardRef";
+import TodoApp from "./components/TodoAppUseReducer";
 
 function Profile() {
   console.log("profil tabına geldin!");
@@ -31,6 +32,12 @@ const App = () => {
   return (
     //fragment
     <>
+      <div className="m-4 p-3">
+        <TodoApp />
+      </div>
+
+
+
       <div className="m-4 p-3">
         <UseRefAndForwardRef />
       </div>
